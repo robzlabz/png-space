@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\MediaCollections\Models\Media as BaseMedia;
+
+class Media extends BaseMedia
+{
+    use HasFactory;
+
+    protected $table = 'media';
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'media_tag');
+    }
+
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class);
+    }
+}
